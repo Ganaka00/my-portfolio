@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Главная</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-bg"></div>
+  <div class="app-shell">
+    <div class="center-panel" id="centerPanel">
+      <h1>Главная</h1>
+      <div class="panel-body">
+        <p class="hint">последние обновления: золото на silver mercury young 2026</p>
+        <div class="button-list" id="buttonList">
+          <button data-section="Обо мне">[обо мне]</button>
+          <button data-section="Портфолио">[портфолио]</button>
+          <button data-section="Опыт работы">[опыт работы]</button>
+          <button data-section="Достижения">[достижения]</button>
+          <button data-section="Образование">[образование]</button>
+          <button data-section="Навыки">[навыки]</button>
+          <button data-section="Контакты">[контакты]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="windows-area" id="windowsArea"></div>
+
+  <template id="windowTemplate">
+    <div class="section-window">
+      <div class="section-header">
+        <span class="section-title"></span>
+        <button class="close-window" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="section-content">
+        <p>Здесь появится контент раздела. Сейчас окно можно перемещать и закрывать.</p>
+      </div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>

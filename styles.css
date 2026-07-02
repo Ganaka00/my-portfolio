@@ -1,0 +1,290 @@
+@font-face {
+  font-family: 'ArialLocal';
+  src: url('fonts/ARIALN.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GaramondLocal';
+  src: url('fonts/GARABD.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: 'ArialLocal', Arial, sans-serif;
+  --bg-color: #111;
+  --bg-image: url('images/my-background.png');
+  --bg-size: 100% 100%;
+  --bg-position: center;
+  --bg-opacity: 1;
+  --cross-color: rgba(0, 0, 0, 0.24);
+  --cross-gap: 72px;
+  --cross-thickness: 4px;
+  color: #ececec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  min-height: 100%;
+}
+
+/* ФОН */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  background-color: var(--bg-color);
+  z-index: -2;
+  overflow: hidden;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --offset-x: 0px;
+  --offset-y: 0px;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --wave-scale: 0.01;
+}
+
+.page-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-image);
+  background-size: var(--bg-size);
+  background-position: var(--bg-position);
+  background-repeat: no-repeat;
+  opacity: var(--bg-opacity);
+}
+
+.page-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='70' font-weight='500' fill='rgba(0,0,0,0.5)' font-family='Helvetica Neue'%3E%2B%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  opacity: 1;
+  pointer-events: none;
+  background-position: center;
+  transform: translate(var(--offset-x), var(--offset-y));
+  will-change: transform;
+  transition: transform 80ms ease-out;
+}
+
+/* КОНТЕЙНЕР ДЛЯ ЦЕНТРИРОВАНИЯ ПАНЕЛИ */
+.app-shell {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ГЛАВНАЯ ПАНЕЛЬ */
+.center-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(600px, 70vw);
+  aspect-ratio: 4 / 3;
+  max-height: 50vh;
+  background: rgba(225, 225, 225, 0.95);
+  border: 3px solid rgba(0, 0, 0, 1);
+  box-shadow: 0 24px 85px rgba(0, 0, 0, 0.3);
+  color: #121212;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
+}
+
+.center-panel h1 {
+  margin: 24px 32px 8px;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 1.05;
+  flex-shrink: 0;
+  font-family: 'GaramondLocal', 'Times New Roman', serif;
+}
+
+.panel-body {
+  padding: 0 32px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  flex: 1;                
+  min-height: 0;          
+}
+
+.hint {
+  font-family: 'ArialLocal', Arial, sans-serif;
+  margin: 0;
+  color: #333;
+  font-size: 1.3rem;
+  text-align: right;
+  margin-top: auto;
+  line-height: 1.4;
+}
+
+.button-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 14px;
+  padding-bottom: 2px;
+}
+
+.button-list button {
+  font-family: 'ArialLocal', Arial, sans-serif;
+  appearance: none;
+  border: none;
+  background: none;
+  text-align: left;
+  padding: 6px 0;
+  font-size: 1.2rem;
+  color: #111;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.button-list button:hover {
+  text-decoration: line-through;
+}
+
+/* ОКНА (всплывающие) */
+.windows-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;   
+}
+
+.section-window {
+  position: absolute;
+  width: min(520px, 90vw);
+  max-height: 85vh;
+  background: rgba(245, 245, 245, 0.98);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+  border-radius: 0px;
+  overflow: hidden;
+  cursor: grab;
+  pointer-events: auto;   
+  display: flex;
+  flex-direction: column;
+}
+
+.section-window.dragging {
+  opacity: 0.95;
+  cursor: grabbing;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: #e6e6e6;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  user-select: none;
+}
+
+.section-title {
+  font-family: 'GaramondLocal', 'Times New Roman', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.close-window {
+  border: none;
+  background: transparent;
+  color: #2c2c2c;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.section-content {
+  font-family: 'ArialLocal', Arial, sans-serif;
+  font-size: 0.95rem;
+  padding: 16px 18px 22px;
+  color: #2c2c2c;
+  line-height: 1.2;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.section-content p {
+  margin: 0;
+  margin-bottom: 0.8em;
+}
+
+.section-content img {
+  border-radius: 0 !important;
+  display: block;
+}
+
+.hint {
+  overflow: hidden;          /* чтобы текст не вылезал за границы */
+  white-space: nowrap;       /* чтобы не переносился на новую строку */
+  animation: marquee 12s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(100%); }   /* начинаем за правым краем */
+  100% { transform: translateX(-100%); }  /* уходим за левый край */
+}
+
+/* Адаптив для маленьких экранов */
+@media (max-width: 840px) {
+  .center-panel {
+    width: min(88vw, 640px);
+    aspect-ratio: auto;   
+    max-height: 85vh;
+    overflow-y: auto;    
+  }
+  .center-panel h1 {
+    margin: 18px 20px 8px;
+    font-size: clamp(2rem, 7vw, 2.8rem);
+  }
+  .panel-body {
+    padding: 0 20px 20px;
+    justify-content: flex-end;
+  }
+  .hint {
+    font-size: 0.88rem;
+  }
+  .button-list {
+    grid-template-columns: repeat(2, max-content);
+    justify-content: end;
+    width: 100%;
+  }
+  .panel-body {
+    padding: 0 20px 16px;
+  }
+  .button-list {
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 6px 10px;
+  }
+  .button-list button:nth-child(6),
+  .button-list button:nth-child(7) {
+    grid-column: auto; 
+  }
+}
