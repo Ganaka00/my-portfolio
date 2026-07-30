@@ -50,7 +50,7 @@ const contentMap = {
   'Портфолио': `
     <h2>Мои проекты</h2>
     <ul>
-      <li><strong><a href="https://docs.google.com/presentation/d/1TgX7hPb7PrDOEaYbC_9uxP6ar7R9NNC8FKSl3PVtTNs/edit?usp=sharing"Найди свою нишу" для Сбера</a></strong> – Проект, взявший золото на Silver Mercury Young. Мы с командой выявили инсайт, предложили интересную идею и... победили!</li>
+      <li><strong><a href="https://docs.google.com/presentation/d/1TgX7hPb7PrDOEaYbC_9uxP6ar7R9NNC8FKSl3PVtTNs/edit?usp=sharing">"Найди свою нишу" для Сбера</a></strong> – Проект, взявший золото на Silver Mercury Young. Мы с командой выявили инсайт, предложили интересную идею и... победили!</li>
       <li><strong><a href="https://t.me/shikagency/56">"офис шик"</a></strong> – Разработал концепцию канала агентства Штольцман и Кац, развил ее с нуля до стабильных 44,1% ERR без бюджета</li>
       <li><strong><a href="https://t.me/rubanrubit">"РУБАН РУБИТ"</a></strong> – Разработал концепцию для личного канала CEO агентства Штольцман и Кац, курировал его ведение и занимался продвижением, что позволило каналу вырасти с 1000 до 2500 подписчиков без бюджета</li>
       <li><strong><a href="https://disk.yandex.ru/d/8bw8dKggoQ48fg">Кампания для "Кредит Урал Банка"</a></strong> – Мы предложили КУБу необычную кампанию, которая делает упор на то, что выгодные условия в банке — это… ну, правда. В итоге маркетинговый директор КУБа назвала эту кампанию самой успешной за время своей работы</li>
