@@ -78,7 +78,9 @@ const contentMap = {
       <li>🏆 Золото Silver Mercury Young '26</li>
       <li>🏅 Бронза на маркетинговом хакатоне "Иначе"</li>
       <li>⭐ Диплом бакалавра с отличием</li>
+    <ul>
     <h2>Какие награды НЕ успел получить</h2>
+    <ul>
       <li>😔 Каннские львы</li>
       <li>😔 D&AD</li>
       <li>😔 The one show</li>
