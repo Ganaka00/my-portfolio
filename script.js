@@ -68,7 +68,7 @@ const contentMap = {
     <h2>Где я работал</h2>
     <ul>
       <li><strong>Штольцман и Кац</strong> – Креатор (июнь 2025 - июль 2026)</li>
-      <li><strong>Mega Night Run</strong> – Организатор мероприятия (декабрь 2024 - апрель 2025)</li>
+      <li><strong>Mega Night Run</strong> – Организатор (декабрь 2024 - апрель 2025)</li>
       <li><strong>ПАО "Россети" - МЭС Урала</strong> – Специалист по связям с общественностью (июнь 2024 - август 2024)</li>
     </ul>
   `,
@@ -83,7 +83,7 @@ const contentMap = {
     <ul>
       <li>😔 Каннские львы</li>
       <li>😔 D&AD</li>
-      <li>😔 The one show</li>
+      <li>😔 The One Show</li>
     </ul>
   `,
   'Образование': `
