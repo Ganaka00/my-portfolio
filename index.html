@@ -28,11 +28,20 @@
 
   <div class="windows-area" id="windowsArea"></div>
 
+  <div class="paper-note" aria-label="Подсказка про движение окон">
+    <img class="paper-layer paper-layer--crumpled" src="images/crumpled-paper.png" alt="">
+    <img class="paper-layer paper-layer--semi" src="images/semi-crumpled-paper.png" alt="">
+    <img class="paper-layer paper-layer--open" src="images/paper.png" alt="">
+    <span class="paper-label">Окна можно двигать</span>
+  </div>
+
   <template id="windowTemplate">
     <div class="section-window">
       <div class="section-header">
         <span class="section-title"></span>
-        <button class="close-window" aria-label="Закрыть">✕</button>
+        <div class="window-actions">
+          <button class="close-window" aria-label="Закрыть">✕</button>
+        </div>
       </div>
       <div class="section-content">
         <p>Здесь появится контент раздела. Сейчас окно можно перемещать и закрывать.</p>
